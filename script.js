@@ -83,9 +83,10 @@ function initAnimations() {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
                 
-                // Animate stats when visible
-                if (entry.target.querySelector('.stat-number')) {
-                    animateStats(entry.target.querySelectorAll('.stat-number'));
+                // Animate stats when a stat-item becomes visible
+                const statNum = entry.target.querySelector('.stat-number');
+                if (statNum) {
+                    animateSingleStat(statNum);
                 }
             }
         });
@@ -99,26 +100,33 @@ function initAnimations() {
 // ========================================
 // Animate Stats Counter
 // ========================================
+function animateSingleStat(statEl) {
+    if (statEl.classList.contains('counted')) return;
+    statEl.classList.add('counted');
+
+    const target = parseInt(statEl.getAttribute('data-target'), 10);
+    if (isNaN(target)) return;
+
+    const duration = 1600;
+    const startTime = performance.now();
+
+    function easeOutQuart(t) {
+        return 1 - Math.pow(1 - t, 4);
+    }
+
+    function tick(now) {
+        const elapsed = now - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        statEl.textContent = Math.floor(easeOutQuart(progress) * target);
+        if (progress < 1) requestAnimationFrame(tick);
+        else statEl.textContent = target;
+    }
+
+    requestAnimationFrame(tick);
+}
+
 function animateStats(stats) {
-    stats.forEach(stat => {
-        if (stat.classList.contains('counted')) return;
-        stat.classList.add('counted');
-        
-        const target = parseInt(stat.getAttribute('data-count'));
-        const duration = 2000;
-        const step = target / (duration / 16);
-        let current = 0;
-        
-        const counter = setInterval(() => {
-            current += step;
-            if (current >= target) {
-                stat.textContent = target;
-                clearInterval(counter);
-            } else {
-                stat.textContent = Math.floor(current);
-            }
-        }, 16);
-    });
+    stats.forEach(animateSingleStat);
 }
 
 // ========================================
