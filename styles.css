@@ -724,11 +724,11 @@ section {
     border: 1px solid var(--glass-border);
     border-radius: var(--radius-xl);
     overflow: hidden;
-    transition: var(--transition-base);
+    transition: box-shadow var(--transition-base), border-color var(--transition-base);
+    will-change: transform;
 }
 
 .project-card:hover {
-    transform: translateY(-10px);
     box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
 }
 

@@ -332,10 +332,12 @@ projectCards.forEach(card => {
         const rotateX = (y - centerY) / 20;
         const rotateY = (centerX - x) / 20;
         
+        card.style.transition = 'transform 0.3s ease, box-shadow var(--transition-base), border-color var(--transition-base)';
         card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px)`;
     });
     
     card.addEventListener('mouseleave', () => {
+        card.style.transition = 'transform 0.7s ease, box-shadow var(--transition-base)';
         card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
     });
 });
