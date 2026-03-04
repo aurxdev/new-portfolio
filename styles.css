@@ -217,6 +217,7 @@ ul {
     min-height: 100vh;
     display: flex;
     align-items: center;
+    justify-content: center;
     position: relative;
     padding: var(--space-32) 0 var(--space-16);
     overflow: hidden;
@@ -240,6 +241,10 @@ ul {
     padding: 0 var(--space-6);
     position: relative;
     z-index: 2;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .hero-badge {
@@ -292,6 +297,8 @@ ul {
     font-size: var(--font-size-lg);
     color: var(--text-secondary);
     max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
     margin-bottom: var(--space-10);
     line-height: 1.7;
 }
@@ -305,6 +312,7 @@ ul {
     display: flex;
     gap: var(--space-4);
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 /* Buttons */
@@ -355,23 +363,10 @@ ul {
 }
 
 /* Hero Visual */
-.hero-visual {
-    position: absolute;
-    top: 50%;
-    right: 10%;
-    transform: translateY(-50%);
-    width: 400px;
-    height: 400px;
-    pointer-events: none;
-}
-
 .hero-avatar {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 280px;
-    height: 280px;
+    width: 180px;
+    height: 180px;
+    margin-bottom: var(--space-8);
     animation: float-avatar 6s ease-in-out infinite;
 }
 
@@ -387,16 +382,11 @@ ul {
     border-radius: 40px;
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    overflow: visible;
-}
-
-.avatar-glow-ring {
-    display: none;
 }
 
 .avatar-img {
-    width: 200px;
-    height: 200px;
+    width: 140px;
+    height: 140px;
     object-fit: contain;
     filter: drop-shadow(0 10px 30px rgba(0, 122, 255, 0.25));
     position: relative;
@@ -404,8 +394,15 @@ ul {
 }
 
 @keyframes float-avatar {
-    0%, 100% { transform: translate(-50%, -50%) translateY(0); }
-    50% { transform: translate(-50%, -50%) translateY(-15px); }
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+.hero-floating-cards {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
 }
 
 .floating-card {
@@ -429,20 +426,20 @@ ul {
 }
 
 .card-1 {
-    top: 10%;
-    right: 20%;
+    top: 20%;
+    left: 10%;
     animation: float 6s ease-in-out infinite;
 }
 
 .card-2 {
-    top: 45%;
-    right: 0;
+    top: 20%;
+    right: 10%;
     animation: float 6s ease-in-out infinite 1s;
 }
 
 .card-3 {
-    bottom: 15%;
-    right: 30%;
+    bottom: 25%;
+    right: 15%;
     animation: float 6s ease-in-out infinite 2s;
 }
 
@@ -1099,7 +1096,7 @@ section {
    Responsive Design
 ======================================== */
 @media (max-width: 1024px) {
-    .hero-visual {
+    .hero-floating-cards {
         display: none;
     }
     
