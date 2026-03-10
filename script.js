@@ -12,6 +12,40 @@ const navLinks = document.querySelector('.nav-links');
 const animatedElements = document.querySelectorAll('.animate-on-scroll');
 const statNumbers = document.querySelectorAll('.stat-number');
 const contactForm = document.querySelector('.contact-form');
+const themeToggle = document.querySelector('.theme-toggle');
+
+// ========================================
+// Theme Toggle (Dark / Light Mode)
+// ========================================
+function initTheme() {
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    
+    if (savedTheme) {
+        document.documentElement.setAttribute('data-theme', savedTheme);
+    } else if (!prefersDark) {
+        document.documentElement.setAttribute('data-theme', 'light');
+    }
+    // Default is dark (no attribute needed, :root styles apply)
+}
+
+// Apply theme immediately to avoid flash
+initTheme();
+
+if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+        
+        if (newTheme === 'dark') {
+            document.documentElement.removeAttribute('data-theme');
+        } else {
+            document.documentElement.setAttribute('data-theme', 'light');
+        }
+        
+        localStorage.setItem('theme', newTheme);
+    });
+}
 
 // ========================================
 // Page Loader

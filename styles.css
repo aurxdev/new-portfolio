@@ -16,6 +16,17 @@
     --glass-bg: rgba(255, 255, 255, 0.05);
     --glass-border: rgba(255, 255, 255, 0.1);
     --card-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    --navbar-bg: rgba(0, 0, 0, 0.8);
+    --navbar-bg-scrolled: rgba(0, 0, 0, 0.95);
+    --overlay-bg: rgba(0, 0, 0, 0.5);
+    --input-bg: rgba(255, 255, 255, 0.05);
+    --input-bg-focus: rgba(255, 255, 255, 0.08);
+    --skill-item-bg: rgba(255, 255, 255, 0.03);
+    --skill-item-hover: rgba(255, 255, 255, 0.08);
+    --trait-hover-bg: rgba(255, 255, 255, 0.1);
+    --contact-link-hover: rgba(255, 255, 255, 0.1);
+    --project-link-bg: #ffffff;
+    --project-link-color: #000000;
     
     /* Typography */
     --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -58,6 +69,30 @@
     --radius-xl: 1.5rem;
     --radius-2xl: 2rem;
     --radius-full: 9999px;
+}
+
+/* Light Theme */
+[data-theme="light"] {
+    --bg-primary: #ffffff;
+    --bg-secondary: #f5f5f7;
+    --bg-tertiary: #e8e8ed;
+    --text-primary: #1d1d1f;
+    --text-secondary: rgba(29, 29, 31, 0.7);
+    --text-tertiary: rgba(29, 29, 31, 0.45);
+    --glass-bg: rgba(0, 0, 0, 0.03);
+    --glass-border: rgba(0, 0, 0, 0.1);
+    --card-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+    --navbar-bg: rgba(255, 255, 255, 0.8);
+    --navbar-bg-scrolled: rgba(255, 255, 255, 0.95);
+    --overlay-bg: rgba(0, 0, 0, 0.4);
+    --input-bg: rgba(0, 0, 0, 0.04);
+    --input-bg-focus: rgba(0, 0, 0, 0.06);
+    --skill-item-bg: rgba(0, 0, 0, 0.03);
+    --skill-item-hover: rgba(0, 0, 0, 0.06);
+    --trait-hover-bg: rgba(0, 0, 0, 0.06);
+    --contact-link-hover: rgba(0, 0, 0, 0.06);
+    --project-link-bg: #1d1d1f;
+    --project-link-color: #ffffff;
 }
 
 /* Reset */
@@ -132,7 +167,7 @@ ul {
     right: 0;
     z-index: 1000;
     padding: var(--space-4) 0;
-    background: rgba(0, 0, 0, 0.8);
+    background: var(--navbar-bg);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--glass-border);
@@ -141,7 +176,7 @@ ul {
 
 .navbar.scrolled {
     padding: var(--space-3) 0;
-    background: rgba(0, 0, 0, 0.95);
+    background: var(--navbar-bg-scrolled);
 }
 
 .nav-content {
@@ -151,6 +186,7 @@ ul {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: var(--space-4);
 }
 
 .logo {
@@ -354,7 +390,7 @@ ul {
 }
 
 .btn-secondary:hover {
-    background: rgba(255, 255, 255, 0.1);
+    background: var(--trait-hover-bg);
     transform: translateY(-2px);
 }
 
@@ -607,7 +643,7 @@ section {
 }
 
 .trait:hover {
-    background: rgba(255, 255, 255, 0.1);
+    background: var(--trait-hover-bg);
     border-color: var(--accent-primary);
     transform: translateY(-2px);
 }
@@ -742,13 +778,13 @@ section {
     align-items: center;
     gap: var(--space-3);
     padding: var(--space-3);
-    background: rgba(255, 255, 255, 0.03);
+    background: var(--skill-item-bg);
     border-radius: var(--radius-md);
     transition: var(--transition-base);
 }
 
 .skill-item:hover {
-    background: rgba(255, 255, 255, 0.08);
+    background: var(--skill-item-hover);
     transform: translateX(5px);
 }
 
@@ -840,7 +876,7 @@ section {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
+    background: var(--overlay-bg);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -855,12 +891,12 @@ section {
 .project-link {
     width: 50px;
     height: 50px;
-    background: var(--text-primary);
+    background: var(--project-link-bg);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--bg-primary);
+    color: var(--project-link-color);
     transform: scale(0.8);
     transition: var(--transition-base);
 }
@@ -940,7 +976,7 @@ section {
 }
 
 .contact-link:hover {
-    background: rgba(255, 255, 255, 0.1);
+    background: var(--contact-link-hover);
     border-color: var(--accent-primary);
     transform: translateX(10px);
 }
@@ -986,7 +1022,7 @@ section {
     width: 100%;
     padding: var(--space-4);
     padding-top: var(--space-6);
-    background: rgba(255, 255, 255, 0.05);
+    background: var(--input-bg);
     border: 1px solid var(--glass-border);
     border-radius: var(--radius-md);
     font-family: inherit;
@@ -1000,7 +1036,7 @@ section {
 .form-group textarea:focus {
     outline: none;
     border-color: var(--accent-primary);
-    background: rgba(255, 255, 255, 0.08);
+    background: var(--input-bg-focus);
 }
 
 .form-group label {
@@ -1070,6 +1106,81 @@ section {
 
 .footer-links a:hover {
     color: var(--text-primary);
+}
+
+/* ========================================
+   Theme Toggle
+======================================== */
+.theme-toggle {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    cursor: pointer;
+    transition: var(--transition-base);
+    color: var(--text-primary);
+    position: relative;
+    overflow: hidden;
+}
+
+.theme-toggle:hover {
+    background: var(--trait-hover-bg);
+    border-color: var(--accent-primary);
+    transform: scale(1.1);
+}
+
+.theme-toggle .icon-sun,
+.theme-toggle .icon-moon {
+    position: absolute;
+    transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+.theme-toggle .icon-sun {
+    opacity: 0;
+    transform: rotate(-90deg) scale(0);
+}
+
+.theme-toggle .icon-moon {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+}
+
+[data-theme="light"] .theme-toggle .icon-sun {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+}
+
+[data-theme="light"] .theme-toggle .icon-moon {
+    opacity: 0;
+    transform: rotate(90deg) scale(0);
+}
+
+/* Light mode specific overrides */
+[data-theme="light"] .hero::before {
+    background: radial-gradient(ellipse at center top, rgba(0, 122, 255, 0.08) 0%, transparent 50%);
+}
+
+[data-theme="light"] .avatar-glow-card {
+    background: rgba(0, 0, 0, 0.03);
+    border-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="light"] .photo-circle {
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .menu-toggle span {
+    background: var(--text-primary);
+}
+
+/* Smooth transition for theme change */
+body,
+body *:not(.theme-toggle):not(.theme-toggle *) {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 /* ========================================
